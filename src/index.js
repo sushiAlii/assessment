@@ -54,7 +54,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const startServer = async (port) => {
-  await initRuntimeConfig();
+  // Had to comment this out as it has some issues
+  // await initRuntimeConfig();
   const server = app.listen(port, () => {
     console.log(`Backend running on http://localhost:${port}`);
   });
