@@ -7,6 +7,7 @@ const itemsRouter = require("./routes/items");
 const statsRouter = require("./routes/stats");
 const tokensRouter = require("./routes/tokens");
 const { initRuntimeConfig } = require("./config/runtimeConfig");
+const logger = require("./middleware/logger");
 require("dotenv").config();
 
 const app = express();
@@ -16,6 +17,7 @@ const PORT = parseInt(process.env.PORT, 10) || 3001;
 app.use(cors({ origin: `http://localhost:${PORT}` }));
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(logger);
 
 // Routes
 app.use("/api/items", itemsRouter);
